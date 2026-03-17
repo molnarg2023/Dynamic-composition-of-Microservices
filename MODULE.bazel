@@ -1,0 +1,16 @@
+module(
+    name = "dynamic_composition_poc",
+    version = "1.0",
+)
+
+bazel_dep(name = "rules_java", version = "9.0.3")
+bazel_dep(name = "rules_jvm_external", version = "5.3")
+
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+maven.install(
+    artifacts = [
+        "com.google.code.gson:gson:2.8.0",
+        "com.google.code.gson:gson:2.10.1",
+    ],
+)
+use_repo(maven, "maven")
