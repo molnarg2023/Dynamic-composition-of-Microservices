@@ -1,15 +1,15 @@
 [
   {
-    "name": "functions.f1.CameraFunc",
+    "name": "functions.f1.f1",
     "isParallel": false
   },
   {
-    "name": "functions.f2.LicensePlateFunc",
+    "name": "functions.f2.f2",
     "isParallel": true
   },
   {
-    "name": "functions.f3.DatabaseFunc",
-    "isParallel": false
+    "name": "functions.f3.f3",
+    "isParallel": true
   },
   {
     "name": "functions.f4.f4",

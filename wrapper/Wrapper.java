@@ -29,17 +29,17 @@ public class Wrapper {
         String configPath = "wrapper/chain-config.json";
         String configJson = Files.readString(Path.of(configPath));
         Type planType = new TypeToken<List<ChainStep>>(){}.getType();
-        List<ChainStep> executionPlan = gson.fromJson(configJson, planType);
+        List<ChainStep> plan = gson.fromJson(configJson, planType);
 
         String currentPath = "";
         ConcurrentLinkedQueue<Path> garbagePaths = new ConcurrentLinkedQueue<>();
         garbagePaths.add(Path.of(currentPath));
 
-        int nFunc = executionPlan.size();
+        int nFunc = plan.size();
 
         try{
             for (int i = 0; i < nFunc; i++){
-                ChainStep step = executionPlan.get(i);
+                ChainStep step = plan.get(i);
 
                 if (!step.isParallel){
                     @SuppressWarnings("unchecked")
