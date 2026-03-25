@@ -18,7 +18,12 @@ A robust, dynamic Java Wrapper has been developed to orchestrate the execution c
   * *Thread-per-Instance*: Prevents race conditions during parallel execution by ensuring each thread receives its own dedicated function instance in memory.
   * *I/O Garbage Collection*: A global cleanup mechanism tracks all temporary and intermediate files (using UUIDs to prevent naming collisions). A `finally` block strictly deletes these files after execution or upon failure, ensuring the container's virtual disk does not fill up.
 
+### 3. The Builder Module (Code Generator)
+A Python-based generation engine utilizing `Jinja2` templates automates the configuration of the Bazel build system.
+* **Automated Manifest Generation**: The `generate.py` script traverses the function directories, parses the `metadata.json` files, and automatically generates the necessary Bazel `BUILD` files for each function.
+* **Dynamic Build Hierarchies**: The script dynamically injects the discovered function targets into the Wrapper's dependency graph and generates the root `MODULE.bazel` file, ensuring a highly scalable and maintainable monorepo architecture.
+
 ## Next Steps
-* Upgrading the Builder module to automatically generate `chain-config.json` and Bazel build manifests based on given partitions using a Python script and package the composite functions into Docker images.
+* Further refining the build logic.
 * Implementing the Adapter module to deploy the generated image via Docker Compose.
 * Integrating execution time monitoring (latency tracking) into the Wrapper to report metrics.
