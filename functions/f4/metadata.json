@@ -1,0 +1,8 @@
+{
+  "comps": [
+    {
+      "name": "f4",
+      "srcs": ["f4.java"],
+      "deps": ["@maven//:com_google_code_gson_gson"]
+    }]
+}

@@ -3,14 +3,33 @@ module(
     version = "1.0",
 )
 
-bazel_dep(name = "rules_java", version = "9.0.3")
-bazel_dep(name = "rules_jvm_external", version = "5.3")
+bazel_dep(name = "rules_java", version = "8.6.3")
+bazel_dep(name = "rules_jvm_external", version = "6.7") 
 
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 maven.install(
     artifacts = [
-        "com.google.code.gson:gson:2.8.0",
         "com.google.code.gson:gson:2.10.1",
     ],
 )
 use_repo(maven, "maven")
+
+bazel_dep(name = "rules_oci", version = "1.8.0")
+bazel_dep(name = "rules_pkg", version = "1.0.1")
+
+bazel_dep(name = "platforms", version = "1.0.0")
+bazel_dep(name = "apple_support", version = "1.24.2")
+bazel_dep(name = "aspect_bazel_lib", version = "2.13.0")
+
+oci = use_extension("@rules_oci//oci:extensions.bzl", "oci")
+
+oci.pull(
+    name = "alpine_java_base",
+    image = "gcr.io/distroless/java21-debian12",
+    digest = "sha256:f34fd3e4e2d7a246d764d0614f5e6ffb3a735930723fac4cfc25a72798950262",
+    platforms = [
+        "linux/arm64/v8",
+    ],
+)
+
+use_repo(oci, "alpine_java_base")

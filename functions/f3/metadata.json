@@ -1,0 +1,8 @@
+{
+  "comps": [
+    {
+      "name": "f3",
+      "srcs": ["f3.java"],
+      "deps": []
+    }]
+}

@@ -13,6 +13,8 @@ public class f1 implements Function<String, String> {
         try {
             System.out.println("F1 indul, generál 3 elemet.");
             List<String> data = List.of("Item_A", "Item_B", "Item_C");
+
+            f1Helper.help();
             
             String outPath = "f1_" + UUID.randomUUID() + ".json";
             Files.writeString(Path.of(outPath), gson.toJson(data));

@@ -1,0 +1,14 @@
+{
+  "comps": [
+    {
+      "name": "f1",
+      "srcs": ["f1.java"],
+      "deps": ["@maven//:com_google_code_gson_gson", ":f1Helper_lib"]
+    },
+    {
+      "name": "f1Helper",
+      "srcs": ["f1Helper.java"],
+      "deps": []
+    }
+  ]
+}
